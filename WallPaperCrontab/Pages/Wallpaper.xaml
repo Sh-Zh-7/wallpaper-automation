@@ -1,0 +1,14 @@
+﻿<Page x:Class="WallPaperCrontab.Pages.WallPaper"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WallPaperCrontab.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="470" d:DesignWidth="644"
+      Title="Page2">
+
+    <Grid>
+        <Label>这是页面二</Label>
+    </Grid>
+</Page>

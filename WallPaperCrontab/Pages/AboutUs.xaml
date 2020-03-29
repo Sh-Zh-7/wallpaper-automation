@@ -1,0 +1,18 @@
+﻿<Page x:Class="WallPaperCrontab.Pages.AboutUs"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WallPaperCrontab.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="470" d:DesignWidth="644"
+      Title="AboutUs">
+
+    <Grid>
+        <Label FontSize="22" FontWeight="Bold" Margin="246,43,211,375.4">本软件的开发者</Label>
+        <Image HorizontalAlignment="Left" Height="129" Margin="66,98,0,0" VerticalAlignment="Top" Width="132" Source="../Resources/github.png"/>
+        <TextBlock Margin="246,113,180,330.4" FontSize="18"><Run Text="QQ：" FontWeight="Bold"/><Run Text="2431297348 "/></TextBlock>
+        <TextBlock Margin="246,200,126,230.4" FontSize="18"><Run Text="GitHub：" FontWeight="Bold"/><Run Text="github.com/Sh-Zh-7 "/></TextBlock>
+        <TextBlock Margin="246,157,101,275.4" FontSize="18"><Run Text="Email：" FontWeight="Bold"/><Run Text="zhihaoshen7@gmail.com "/></TextBlock>
+    </Grid>
+</Page>

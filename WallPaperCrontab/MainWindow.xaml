@@ -1,0 +1,50 @@
+﻿<Window x:Class="WallPaperCrontab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WallPaperCrontab"
+        mc:Ignorable="d"
+        Title="WallPaperCrontab" Height="500" Width="800" Background="White" Icon="Resources/wallpaper_crontab.ico" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="WhiteSmoke"></Rectangle>
+        <ListBox Foreground="Black" Margin="0, 0, 0, 0" BorderThickness="0" FontSize="20px" FontFamily="Yu Gothic UI" FontWeight="Bold" Background="#3F0B8C78" SelectedIndex="0">
+            <!-- 重新设置模板 -->
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <StackPanel Height="60" Orientation="Horizontal" Background="Transparent" Name="Container" Cursor="Hand">
+                                    <Rectangle Fill="AliceBlue" VerticalAlignment="Stretch" Width="5" Visibility="Hidden" Name="LeftSideRectangle"/>
+                                    <ContentPresenter VerticalAlignment="Center" Margin="15,0,0,0"/>
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="LeftSideRectangle"/>
+                                        <Setter Property="Background" Value="#FF0D9A7E" TargetName="Container"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="LeftSideRectangle"/>
+                                        <Setter Property="Background" Value="#FF0D9A7E" TargetName="Container"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBoxItem Content="主页面" Name="MainPageLBI" MouseLeftButtonDown="MainPageLBI_MouseLeftButtonDown"/>
+            <ListBoxItem Content="查看壁纸" Name="WallPaperLBI" MouseLeftButtonDown="WallPaperLBI_MouseLeftButtonDown"/>
+            <ListBoxItem Content="问题反馈" Name="QuestionsLBI" MouseLeftButtonDown="QuestionsLBI_MouseLeftButtonDown"/>
+            <ListBoxItem Content="关于我们" Name="AboutUsLBI" MouseLeftButtonDown="AboutUsLBI_MouseLeftButtonDown"/>
+            <ListBoxItem Content="其它" Name="OthersLBI" MouseLeftButtonDown="OthersLBI_MouseLeftButtonDown"/>
+        </ListBox>
+        <Image HorizontalAlignment="Left" Height="470" Margin="150,0,-0.4,0" VerticalAlignment="Top" Width="644" Source="Resources/background.jpg" Stretch="Fill" Opacity="0.3" Grid.ColumnSpan="2"/>
+        <Frame Name="mainFrame" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" Margin="150,0,-0.4,0.4"></Frame>
+    </Grid>
+</Window>
