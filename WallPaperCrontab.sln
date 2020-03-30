@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaperCrontab", "WallPaperCrontab\WallPaperCrontab.csproj", "{2E313A96-AB70-44D3-8121-AF52ADDDBE4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFUICrontab", "WallPaperCrontab\WPFUICrontab.csproj", "{2E313A96-AB70-44D3-8121-AF52ADDDBE4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallPaperChanger", "WallPaperChanger\WallPaperChanger.csproj", "{1C644AF6-D1A5-473E-A6DE-545EECF7F2D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{29D96828-6AD2-4A79-9BF0-AFE2D01B7783}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{2E313A96-AB70-44D3-8121-AF52ADDDBE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E313A96-AB70-44D3-8121-AF52ADDDBE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E313A96-AB70-44D3-8121-AF52ADDDBE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C644AF6-D1A5-473E-A6DE-545EECF7F2D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C644AF6-D1A5-473E-A6DE-545EECF7F2D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C644AF6-D1A5-473E-A6DE-545EECF7F2D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C644AF6-D1A5-473E-A6DE-545EECF7F2D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D96828-6AD2-4A79-9BF0-AFE2D01B7783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D96828-6AD2-4A79-9BF0-AFE2D01B7783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D96828-6AD2-4A79-9BF0-AFE2D01B7783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D96828-6AD2-4A79-9BF0-AFE2D01B7783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

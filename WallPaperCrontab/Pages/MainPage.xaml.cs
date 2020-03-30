@@ -13,31 +13,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaskScheduler;
+using static WallPaperCrontab.TaskScheduler;
 
 namespace WallPaperCrontab.Pages
 {
     /// <summary>
-    /// Page1.xaml 的交互逻辑
+    /// 交互逻辑
     /// </summary>
     public partial class MainPage : Page
     {
-        //public class DropDownItem
-        //{
-        //    public DropDownItem(int id, string name)
-        //    {
-        //        ID = id; Name = name;
-        //    }
-        //    public int ID { get; set; }
-        //    public string Name { get; set; }
-        //}
+
         public MainPage()
         {
             InitializeComponent();
-            //List<DropDownItem> drop_down_items = new List<DropDownItem>();
-            //drop_down_items.Add(new DropDownItem(1, "平铺"));
-            //drop_down_items.Add(new DropDownItem(2, "拉伸"));
-            //drop_down_items.Add(new DropDownItem(3, "居中"));
-            //Display.ItemsSource = drop_down_items;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -69,6 +58,46 @@ namespace WallPaperCrontab.Pages
             }
             // 接下来就是处理读取的图片问题了
             System.Windows.MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButton.OK);
+        }
+
+        /// <summary>
+        /// 创建计划任务
+        /// </summary>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            // TODO:不能同时创建多个计划任务
+            if (!SchTaskExt.IsExists("WallPaperChangeTask"))
+            {
+                var creator = "Tonge";
+                //计划任务名称
+                var taskName = "WallPaperChangeTask";
+                //执行的程序路径
+                var path = "C:\\Windows\\System32\\calc.exe";
+                //计划任务执行的频率 PT1M一分钟  PT1H30M 90分钟
+                var interval = "PT1M";
+                //开始时间 请遵循 yyyy-MM-ddTHH:mm:ss 格式
+                DateTime time = DateTime.Now;
+                var startBoundary = time.GetDateTimeFormats('s')[0].ToString();
+                var description = "this is description";
+                _TASK_STATE state = SchTaskExt.CreateTaskScheduler(creator, taskName, path, interval, startBoundary, description);
+            } else
+            {
+                MessageBox.Show("不能同时创建多个计划任务！！");
+            }
+        }
+
+        /// <summary>
+        /// 删除计划任务
+        /// </summary>
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (SchTaskExt.IsExists("WallPaperChangeTask"))
+            {
+                SchTaskExt.DeleteTask("WallPaperChangeTask");
+            } else
+            {
+                MessageBox.Show("不能删除未定义的计划任务！！");
+            }
         }
     }
 

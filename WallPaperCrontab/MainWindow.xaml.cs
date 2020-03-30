@@ -15,6 +15,14 @@ using System.Windows.Shapes;
 
 namespace WallPaperCrontab
 {
+
+    public enum Style : int
+    {
+        Tiled,
+        Centered,
+        Stretched
+    }
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>

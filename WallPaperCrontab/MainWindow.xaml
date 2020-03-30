@@ -12,7 +12,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Rectangle Fill="WhiteSmoke"></Rectangle>
-        <ListBox Foreground="Black" Margin="0, 0, 0, 0" BorderThickness="0" FontSize="20px" FontFamily="Yu Gothic UI" FontWeight="Bold" Background="#3F0B8C78" SelectedIndex="0">
+        <ListBox Foreground="Black" Margin="0, 0, 0, 0" BorderThickness="0" FontSize="20px" FontFamily="Yu Gothic UI" Background="#3F0B8C78" SelectedIndex="0">
             <!-- 重新设置模板 -->
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
