@@ -1,0 +1,4 @@
+{
+	"images_path": ["./TestImg/test1.jpg", "./TestImg/test2.jpg"],
+	"images_style": [0, 1]
+}
