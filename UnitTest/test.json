@@ -1,4 +1,4 @@
 {
-	"images_path": ["./TestImg/test1.jpg", "./TestImg/test2.jpg"],
-	"images_style": [0, 1]
+	"images_path": ["./TestImg/test1.png", "./TestImg/test2.png", "./TestImg/test3.png"],
+	"images_style": [0, 1, 2]
 }

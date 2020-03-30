@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace WallPaperChanger
 {
 
-    public sealed class Wallpaper
+    public sealed class WallpaperSetter
     {
-        Wallpaper() { }
+        WallpaperSetter() { }
 
         const int SPI_SETDESKWALLPAPER = 20;
         const int SPIF_UPDATEINIFILE = 0x01;
@@ -35,11 +35,9 @@ namespace WallPaperChanger
             }
             return result;
         }
-        public static void Set(string path, Style style)
+        public static void SetWallPaper(string path, Style style)
         {
             System.Drawing.Image img = GetImage(path);
-            //string tempPath = Path.Combine(Path.GetTempPath(), "wallpaper.bmp");
-            //img.Save(tempPath, System.Drawing.Imaging.ImageFormat.Png);
 
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop", true);
             if (style == Style.Stretched)
@@ -59,7 +57,6 @@ namespace WallPaperChanger
                 key.SetValue(@"WallpaperStyle", 1.ToString());
                 key.SetValue(@"TileWallpaper", 1.ToString());
             }
-
             SystemParametersInfo(SPI_SETDESKWALLPAPER,
                 0,
                 path,

@@ -14,18 +14,15 @@
         <Button Content="开始切换" HorizontalAlignment="Left" Margin="140,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="Button_Click_1"/>
         <Button Content="终止进程" HorizontalAlignment="Left" Margin="382,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="Button_Click_2"/>
         <Button Content="浏   览" HorizontalAlignment="Left" Margin="228,45,0,0" VerticalAlignment="Top" Width="207" Height="42" Click="Button_Click"/>
-        <ComboBox HorizontalAlignment="Left" Margin="228,147,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8">
+        <ComboBox Name="StyleSelect" HorizontalAlignment="Left" Margin="228,147,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="StyleSelect_SelectionChanged">
             <ListBoxItem Content="平铺" FontSize="14"/>
-            <ListBoxItem Content="拉伸" FontSize="14"/>
             <ListBoxItem Content="居中" FontSize="14"/>
-            <ListBoxItem Content="填充" FontSize="14"/>
+            <ListBoxItem Content="拉伸" FontSize="14"/>
         </ComboBox>
-        <Button Content="添加" HorizontalAlignment="Left" Margin="474,46,0,0" VerticalAlignment="Top" Width="105" Height="41"/>
-        <ComboBox HorizontalAlignment="Left" Margin="228,250,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8">
+        <Button Content="添加" HorizontalAlignment="Left" Margin="474,46,0,0" VerticalAlignment="Top" Width="105" Height="41" Click="Button_Click_3"/>
+        <ComboBox Name="TimeSelect" HorizontalAlignment="Left" Margin="228,250,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="TimeSelect_SelectionChanged">
+            <ListBoxItem Content="每5秒" FontSize="14"/>
             <ListBoxItem Content="每10秒" FontSize="14"/>
-            <ListBoxItem Content="每一天" FontSize="14"/>
-            <ListBoxItem Content="每一周" FontSize="14"/>
-            <ListBoxItem Content="每一小时" FontSize="14"/>
         </ComboBox>
 
 

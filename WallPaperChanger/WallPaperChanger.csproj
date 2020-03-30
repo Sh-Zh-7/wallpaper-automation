@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\WallPaperCrontab\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -47,10 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Changer.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="ImagesAttr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WallPaper.cs" />
+    <Compile Include="TimeDiff.cs" />
+    <Compile Include="TimeMode.cs" />
+    <Compile Include="WallPaperSetter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

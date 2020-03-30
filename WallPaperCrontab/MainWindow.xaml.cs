@@ -15,12 +15,19 @@ using System.Windows.Shapes;
 
 namespace WallPaperCrontab
 {
-
     public enum Style : int
     {
         Tiled,
         Centered,
         Stretched
+    }
+    // 全局变量
+    public class GlobalVariable
+    {
+        // 对象这个东西未定义也是会报错的
+        public static ImagesAttr imagesAttr = new ImagesAttr();
+        public static int timeSelectIndex { get; set; }
+        public static int styleSelectIndex { get; set; }
     }
 
     /// <summary>
@@ -31,6 +38,10 @@ namespace WallPaperCrontab
         private Dictionary<string, Uri> allViews = new Dictionary<string, Uri>(); //包含所有页面
         public MainWindow()
         {
+            if (Environment.GetEnvironmentVariable("WALLPAPER_CRONTAB", EnvironmentVariableTarget.User) == null)
+            {
+                Environment.SetEnvironmentVariable("WALLPAPER_CRONTAB", Environment.CurrentDirectory, EnvironmentVariableTarget.User);
+            }
             InitializeComponent();
             // 果然还要主动地绑定事件
             MainPageLBI.AddHandler(ListBoxItem.MouseLeftButtonDownEvent, new MouseButtonEventHandler(MainPageLBI_MouseLeftButtonDown), true);
@@ -71,4 +82,5 @@ namespace WallPaperCrontab
             mainFrame.Navigate(allViews["others"]);
         }
     }
+
 }

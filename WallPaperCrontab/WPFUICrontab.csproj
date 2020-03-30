@@ -62,6 +62,7 @@
     </ApplicationDefinition>
     <Compile Include="ImagesAttr.cs" />
     <Compile Include="TaskScheduler.cs" />
+    <Compile Include="TimeMode.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

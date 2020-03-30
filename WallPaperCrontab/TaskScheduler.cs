@@ -11,10 +11,6 @@ namespace WallPaperCrontab
     {
         public class SchTaskExt
         {
-            /// <summary>
-            /// delete task
-            /// </summary>
-            /// <param name="taskName"></param>
             public static void DeleteTask(string taskName)
             {
                 TaskSchedulerClass ts = new TaskSchedulerClass();
@@ -22,10 +18,6 @@ namespace WallPaperCrontab
                 ITaskFolder folder = ts.GetFolder("\\");
                 folder.DeleteTask(taskName, 0);
             }
-
-            /// <summary>
-            /// get all tasks
-            /// </summary>
             public static IRegisteredTaskCollection GetAllTasks()
             {
                 TaskSchedulerClass ts = new TaskSchedulerClass();
@@ -34,11 +26,6 @@ namespace WallPaperCrontab
                 IRegisteredTaskCollection tasks_exists = folder.GetTasks(1);
                 return tasks_exists;
             }
-            /// <summary>
-            /// check task isexists
-            /// </summary>
-            /// <param name="taskName"></param>
-            /// <returns></returns>
             public static bool IsExists(string taskName)
             {
                 var isExists = false;
@@ -55,14 +42,6 @@ namespace WallPaperCrontab
                 return isExists;
             }
 
-            /// <summary>
-            /// create task
-            /// </summary>
-            /// <param name="creator"></param>
-            /// <param name="taskName"></param>
-            /// <param name="path"></param>
-            /// <param name="interval"></param>
-            /// <returns>state</returns>
             public static _TASK_STATE CreateTaskScheduler(string creator, string taskName, string path, string interval, string startBoundary, string description)
             {
                 try
