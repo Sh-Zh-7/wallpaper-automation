@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace WallPaperChanger
 {
@@ -12,13 +13,6 @@ namespace WallPaperChanger
 
         // 注意TimeSpan的各种属性
         // 比如1:30, Hour就是1, Minute就是30
-        public enum TimeMode: int
-        {
-            Second,
-            Minute,
-            Hour,
-            Day
-        }
         private static TimeSpan GetDiffTime(DateTime startTime, DateTime endTime)
         {
             return endTime.Subtract(startTime);
@@ -48,17 +42,17 @@ namespace WallPaperChanger
             return diffTime.TotalDays;
         }
         // 提供给外界的唯一一个函数接口，通过这个接口获得相应日期之差
-        public static double GetTargetModeDiff(DateTime startTime, DateTime endTime, TimeMode timeMode=TimeMode.Second)
+        public static double GetTargetModeDiff(DateTime startTime, DateTime endTime, TimeUnit timeMode=TimeUnit.Second)
         {
             switch (timeMode)
             {
-                case TimeMode.Second:
+                case TimeUnit.Second:
                     return GetDiffSeconds(startTime, endTime);
-                case TimeMode.Minute:
+                case TimeUnit.Minute:
                     return GetDiffMinutes(startTime, endTime);
-                case TimeMode.Hour:
+                case TimeUnit.Hour:
                     return GetDiffHours(startTime, endTime);
-                case TimeMode.Day:
+                case TimeUnit.Day:
                     return GetDiffDays(startTime, endTime);
                 default:
                     return -1;

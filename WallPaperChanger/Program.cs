@@ -12,12 +12,6 @@ using Utils;
 
 namespace WallPaperChanger
 {
-    public enum Style : int
-    {
-        Tiled,
-        Centered,
-        Stretched
-    }
     public class Program
     {
 
@@ -40,17 +34,17 @@ namespace WallPaperChanger
         }
 
         // 根据给定的时间和间隔获得图片的索引
-        public static int GetIndex(DateTime start, TimeDiff.TimeMode timeMode, double interval)
+        public static int GetIndex(DateTime start, TimeUnit timeUnit, double interval)
         {
             DateTime now = DateTime.Now;
-            double diffTime = TimeDiff.GetTargetModeDiff(start, now, timeMode);
+            double diffTime = TimeDiff.GetTargetModeDiff(start, now, timeUnit);
             return (int)(diffTime / interval);
         }
 
         public static void SetWallPaper(
             string jsonPath,
             DateTime startTime, 
-            TimeDiff.TimeMode timeMode,
+            TimeUnit timeUnit,
             double interval
             )
         {
@@ -59,7 +53,7 @@ namespace WallPaperChanger
             // 反序列化该json文件，得到各个属性（图片路径的List，壁纸的展示格式）
             ImagesAttr imagesAttr = JsonConvert.DeserializeObject<ImagesAttr>(jsonStr);
             // 计算相应日期，该显示哪一个图片
-            int index = GetIndex(startTime, timeMode, interval);
+            int index = GetIndex(startTime, timeUnit, interval);
             // 使用LINQ的方式
             int length = imagesAttr.imagesPath.Count;
             string targetPath = imagesAttr.imagesPath[index % length];
@@ -81,7 +75,7 @@ namespace WallPaperChanger
             // 反序列化
             TimeMode timeMode = JsonConvert.DeserializeObject<TimeMode>(jsonStr);
             DateTime startTime = DateTime.ParseExact(timeMode.startTime, "MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-            TimeDiff.TimeMode mode = (TimeDiff.TimeMode)timeMode.timeMode;
+            TimeUnit mode = (TimeUnit)timeMode.timeMode;
             double interval = timeMode.interval;
             // 根据图片的具体属性修改壁纸
             SetWallPaper(project_path + "/Config/image_attr.json", startTime, mode, interval);

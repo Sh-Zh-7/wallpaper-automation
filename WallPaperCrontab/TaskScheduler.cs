@@ -61,11 +61,13 @@ namespace WallPaperCrontab
 
                     // set base attr 
                     ITaskDefinition task = scheduler.NewTask(0);
-                    task.RegistrationInfo.Author = creator;//creator
-                    task.RegistrationInfo.Description = description;//description
+                    task.RegistrationInfo.Author = creator;
+                    task.RegistrationInfo.Description = description;
 
                     // set trigger  (IDailyTrigger ITimeTrigger)
+                    // 这里可以修改我们的任务到底是什么时候执行
                     ITimeTrigger tt = (ITimeTrigger)task.Triggers.Create(_TASK_TRIGGER_TYPE2.TASK_TRIGGER_TIME);
+                    // 这里我直接改成Duration
                     tt.Repetition.Interval = interval;// format PT1H1M==1小时1分钟 设置的值最终都会转成分钟加入到触发器
                     tt.StartBoundary = startBoundary;//start time
 

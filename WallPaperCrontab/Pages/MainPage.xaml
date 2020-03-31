@@ -21,8 +21,11 @@
             <ListBoxItem Content="拉伸" FontSize="14"/>
         </ComboBox>
         <ComboBox Name="TimeSelect" HorizontalAlignment="Left" Margin="228,250,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="TimeSelect_SelectionChanged">
-            <ListBoxItem Content="每5秒" FontSize="14"/>
-            <ListBoxItem Content="每10秒" FontSize="14"/>
+            <ListBoxItem Content="每1分钟" FontSize="14"/>
+            <ListBoxItem Content="每15分钟" FontSize="14"/>
+            <ListBoxItem Content="每1天" FontSize="14"/>
+            <ListBoxItem Content="每1小时" FontSize="14"/>
+            <ListBoxItem Content="每1周" FontSize="14"/>
         </ComboBox>
 
 

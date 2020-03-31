@@ -16,12 +16,6 @@ using Utils;
 
 namespace WallPaperCrontab
 {
-    public enum Style : int
-    {
-        Tiled,
-        Centered,
-        Stretched
-    }
     // 全局变量
     public class GlobalVariable
     {

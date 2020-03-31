@@ -38,6 +38,15 @@ namespace WallPaperCrontab.Pages
             InitializeComponent();
         }
 
+        // TODO：添加更为复杂的时间间隔格式
+        // 根据选定的时间间隔，获得计划任务的时间间隔格式
+        private string GetFrequency(int targetInterval)
+        {
+            // 这里只考虑了分钟的情况
+            // 因为最小的间隔只能是分钟
+            return "PT" + targetInterval.ToString() + "M";
+        }
+
         // 浏览文件
         private void Browse_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -108,7 +117,7 @@ namespace WallPaperCrontab.Pages
             int imagesNumber = GlobalVariable.imagesAttr.imagesPath.Count;
             for (int i = 0; i < imagesNumber; ++i)
             {
-                GlobalVariable.imagesAttr.imagesStyle.Add(GlobalVariable.timeSelectIndex);
+                GlobalVariable.imagesAttr.imagesStyle.Add(GlobalVariable.styleSelectIndex);
             }
             // 导出成json
             string imageAttrJson = JsonConvert.SerializeObject(GlobalVariable.imagesAttr);
@@ -121,13 +130,34 @@ namespace WallPaperCrontab.Pages
             // 再创建TimeMode对象
             // 这里暂时赋值为0，表示以秒为单位
             // TODO: 这里还有很多功能可以添加
-            int targetInterval = 3;
+            int targetInterval = -1;
+            int targetTimeMode = -1;
             switch (GlobalVariable.timeSelectIndex)
             {
-                case 0: targetInterval = 7; break;
-                case 1: targetInterval = 10; break;
+                case 0: // 1分钟
+                    targetInterval = 1;
+                    targetTimeMode = (int)TimeUnit.Minute;
+                    break;
+                case 1: // 15分钟
+                    targetInterval = 15;
+                    targetTimeMode = (int)TimeUnit.Minute;
+                    break;
+                case 2: // 1小时
+                    targetInterval = 1;
+                    targetTimeMode = (int)TimeUnit.Hour;
+                    break;
+                case 3: // 1天
+                    targetInterval = 1;
+                    targetTimeMode = (int)TimeUnit.Day;
+                    break;
+                case 4: // 1周
+                    targetInterval = 1;
+                    targetTimeMode = (int)TimeUnit.Week;
+                    break;
             }
-            TimeMode timeMode = new TimeMode(DateTime.Now, 0, targetInterval);
+
+
+            TimeMode timeMode = new TimeMode(DateTime.Now, targetTimeMode, targetInterval);
             // 导出成json
             string timeModeJson = JsonConvert.SerializeObject(timeMode);
             if (Directory.Exists(@".\Config") == false)
@@ -146,7 +176,7 @@ namespace WallPaperCrontab.Pages
                 //执行的程序路径。
                 var path = Environment.CurrentDirectory + @"\WallPaperChanger.exe";
                 //计划任务执行的频率 PT1M一分钟  PT1H30M 90分钟
-                var interval = "PT1M";
+                var interval = GetFrequency(targetInterval);
                 //开始时间 请遵循 yyyy-MM-ddTHH:mm:ss 格式
                 DateTime time = DateTime.Now;
                 var startBoundary = time.GetDateTimeFormats('s')[0].ToString();
