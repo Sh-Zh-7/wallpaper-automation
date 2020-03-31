@@ -11,15 +11,15 @@
         <Label HorizontalAlignment="Left" Margin="65,46,0,0" VerticalAlignment="Top" Height="41" Width="104" Content="新增壁纸" FontSize="18" FontWeight="Bold"/>
         <Label HorizontalAlignment="Left" Margin="65,147,0,0" VerticalAlignment="Top" Height="41" Width="104" Content="展示效果" FontSize="18" FontWeight="Bold"/>
         <Label HorizontalAlignment="Left" Margin="65,250,0,0" VerticalAlignment="Top" Height="41" Width="104" Content="切换时间" FontSize="18" FontWeight="Bold"/>
-        <Button Content="开始切换" HorizontalAlignment="Left" Margin="140,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="Button_Click_1"/>
-        <Button Content="终止进程" HorizontalAlignment="Left" Margin="382,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="Button_Click_2"/>
-        <Button Content="浏   览" HorizontalAlignment="Left" Margin="228,45,0,0" VerticalAlignment="Top" Width="207" Height="42" Click="Button_Click"/>
+        <Button Content="浏   览" HorizontalAlignment="Left" Margin="228,45,0,0" VerticalAlignment="Top" Width="207" Height="42" Click="Browse_Button_Click"/>
+        <Button Content="添加" HorizontalAlignment="Left" Margin="474,46,0,0" VerticalAlignment="Top" Width="105" Height="41" Click="Add_Button_Click"/>
+        <Button Content="开始切换" HorizontalAlignment="Left" Margin="140,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="Start_Button_Click"/>
+        <Button Content="终止进程" HorizontalAlignment="Left" Margin="382,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="End_Button_Click"/>
         <ComboBox Name="StyleSelect" HorizontalAlignment="Left" Margin="228,147,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="StyleSelect_SelectionChanged">
             <ListBoxItem Content="平铺" FontSize="14"/>
             <ListBoxItem Content="居中" FontSize="14"/>
             <ListBoxItem Content="拉伸" FontSize="14"/>
         </ComboBox>
-        <Button Content="添加" HorizontalAlignment="Left" Margin="474,46,0,0" VerticalAlignment="Top" Width="105" Height="41" Click="Button_Click_3"/>
         <ComboBox Name="TimeSelect" HorizontalAlignment="Left" Margin="228,250,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="TimeSelect_SelectionChanged">
             <ListBoxItem Content="每5秒" FontSize="14"/>
             <ListBoxItem Content="每10秒" FontSize="14"/>

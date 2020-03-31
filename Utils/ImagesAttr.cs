@@ -10,10 +10,10 @@ namespace Utils
     {
         public ImagesAttr()
         {
-            images_path = new List<string>();
-            images_style = new List<int>();
+            imagesPath = new List<string>();
+            imagesStyle = new List<int>();
         }
-        public List<string> images_path { get; set; }
-        public List<int> images_style { get; set; }
+        public List<string> imagesPath { get; set; }
+        public List<int> imagesStyle { get; set; }
     }
 }

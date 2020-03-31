@@ -15,16 +15,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskScheduler;
+using Utils;
 using static WallPaperCrontab.TaskScheduler;
 
 namespace WallPaperCrontab.Pages
 {
     public partial class MainPage : Page
     {
+        // 创建计划任务的常量
+        private const string kTaskName = "WallPaperChangeTask";
+        private const string kCreatorName = "SHZH";
+        private const string kDescription = "MADE BY CSHARP";
 
-        static Boolean firstSelectTime = true;
-        static Boolean firstSelectStyle = true;
-
+        // 是否是第一次选择combobox
+        static bool firstSelectTime = true;
+        static bool firstSelectStyle = true;
+        // 选择图片的路径
         static string selectedFilePath { get; set; }
 
         public MainPage()
@@ -32,7 +38,8 @@ namespace WallPaperCrontab.Pages
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        // 浏览文件
+        private void Browse_Button_Click(object sender, RoutedEventArgs e)
         {
             var fileContent = string.Empty;
             var filePath = string.Empty;
@@ -47,118 +54,30 @@ namespace WallPaperCrontab.Pages
 
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    //Get the path of specified file
+                    // 获得选取文件的路径
                     filePath = openFileDialog.FileName;
-
-                    ////Read the contents of the file into a stream
-                    //var fileStream = openFileDialog.OpenFile();
-
-                    //using (StreamReader reader = new StreamReader(fileStream))
-                    //{
-                    //    fileContent = reader.ReadToEnd();
-                    //}
                 }
             }
-            // 接下来就是处理读取的图片问题了
-            //System.Windows.MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButton.OK);
             selectedFilePath = filePath;
         }
 
-        /// <summary>
-        /// 创建计划任务
-        /// </summary>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        // 把浏览到的文件添加到json类实例的属性中
+        private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            // 创建两个实体类对象
-            // 并将他们导出成json的形式
-
-            // 先创建ImageAttr对象
-            int images_number = GlobalVariable.imagesAttr.images_path.Count;
-            for (int i = 0; i < images_number; ++i)
+            if (GlobalVariable.imagesAttr == null)
             {
-                GlobalVariable.imagesAttr.images_style.Add(GlobalVariable.timeSelectIndex);
-            }
-            // 导出成json
-            string image_attr_json = JsonConvert.SerializeObject(GlobalVariable.imagesAttr);
-            if (Directory.Exists(@".\Config") == false)
-            {
-                Directory.CreateDirectory(@".\Config");
-            }
-            File.WriteAllText(@".\Config\image_attr.json", image_attr_json);
-
-            // 再创建TimeMode对象
-            // 这里暂时赋值为0，表示以秒为单位
-            // TODO: 这里还有很多功能可以添加
-            int target_interval = 3;
-            switch (GlobalVariable.timeSelectIndex)
-            {
-                case 0: target_interval = 7; break;
-                case 1: target_interval = 10; break;
-            }
-            TimeMode timeMode = new TimeMode(DateTime.Now, 0, target_interval);
-            // 导出成json
-            string timeModeJson = JsonConvert.SerializeObject(timeMode);
-            if (Directory.Exists(@".\Config") == false)
-            {
-                Directory.CreateDirectory(@".\Config");
-            }
-            File.WriteAllText(@".\Config\time_mode.json", timeModeJson);
-
-
-            // TODO：将常数转变为静态变量
-            // 创建计划任务
-            if (!SchTaskExt.IsExists("WallPaperChangeTask"))
-            {
-                var creator = "Tonge";
-                //计划任务名称
-                var taskName = "WallPaperChangeTask";
-                //执行的程序路径
-                // 这里似乎是直接把路径给改变了。。
-                var path = Environment.CurrentDirectory + @"\WallPaperChanger.exe";
-                //计划任务执行的频率 PT1M一分钟  PT1H30M 90分钟
-                var interval = "PT1M";
-                //开始时间 请遵循 yyyy-MM-ddTHH:mm:ss 格式
-                DateTime time = DateTime.Now;
-                var startBoundary = time.GetDateTimeFormats('s')[0].ToString();
-                var description = "this is description";
-                _TASK_STATE state = SchTaskExt.CreateTaskScheduler(creator, taskName, path, interval, startBoundary, description);
-            } else
-            {
-                MessageBox.Show("不能同时创建多个计划任务！！");
-            }
-        }
-
-        /// <summary>
-        /// 删除计划任务
-        /// </summary>
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            if (SchTaskExt.IsExists("WallPaperChangeTask"))
-            {
-                SchTaskExt.DeleteTask("WallPaperChangeTask");
-            } else
-            {
-                MessageBox.Show("不能删除未定义的计划任务！！");
-            }
-        }
-
-        // 如果是本来就存在的时间的话只要在标签里面添加事件的类别就可以不全了
-        private void TimeSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // 原来静态成员是这么用得
-            if (!firstSelectTime)
-            {
-                 GlobalVariable.timeSelectIndex = TimeSelect.SelectedIndex;
+                MessageBox.Show("空指针异常！");
             }
             else
             {
-                firstSelectTime = false;
+                GlobalVariable.imagesAttr.imagesPath.Add(selectedFilePath);
             }
+
         }
 
-        private void  StyleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        // 获得风格
+        private void StyleSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // 原来静态成员是这么用得
             if (!firstSelectStyle)
             {
                 GlobalVariable.styleSelectIndex = StyleSelect.SelectedIndex;
@@ -169,16 +88,87 @@ namespace WallPaperCrontab.Pages
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        // 获得时间模式
+        private void TimeSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (GlobalVariable.imagesAttr == null)
+            if (!firstSelectTime)
             {
-                MessageBox.Show("空指针异常！");
+                GlobalVariable.timeSelectIndex = TimeSelect.SelectedIndex;
+            }
+            else
+            {
+                firstSelectTime = false;
+            }
+        }
+
+        // 创建计划任务
+        private void Start_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // 先创建ImageAttr对象
+            int imagesNumber = GlobalVariable.imagesAttr.imagesPath.Count;
+            for (int i = 0; i < imagesNumber; ++i)
+            {
+                GlobalVariable.imagesAttr.imagesStyle.Add(GlobalVariable.timeSelectIndex);
+            }
+            // 导出成json
+            string imageAttrJson = JsonConvert.SerializeObject(GlobalVariable.imagesAttr);
+            if (Directory.Exists(@".\Config") == false)
+            {
+                Directory.CreateDirectory(@".\Config");
+            }
+            File.WriteAllText(@".\Config\image_attr.json", imageAttrJson);
+
+            // 再创建TimeMode对象
+            // 这里暂时赋值为0，表示以秒为单位
+            // TODO: 这里还有很多功能可以添加
+            int targetInterval = 3;
+            switch (GlobalVariable.timeSelectIndex)
+            {
+                case 0: targetInterval = 7; break;
+                case 1: targetInterval = 10; break;
+            }
+            TimeMode timeMode = new TimeMode(DateTime.Now, 0, targetInterval);
+            // 导出成json
+            string timeModeJson = JsonConvert.SerializeObject(timeMode);
+            if (Directory.Exists(@".\Config") == false)
+            {
+                Directory.CreateDirectory(@".\Config");
+            }
+            File.WriteAllText(@".\Config\time_mode.json", timeModeJson);
+
+
+            // 创建计划任务
+            if (!SchTaskExt.IsExists(kTaskName))
+            {
+                var creator = kCreatorName;
+                //计划任务名称
+                var taskName = kTaskName;
+                //执行的程序路径。
+                var path = Environment.CurrentDirectory + @"\WallPaperChanger.exe";
+                //计划任务执行的频率 PT1M一分钟  PT1H30M 90分钟
+                var interval = "PT1M";
+                //开始时间 请遵循 yyyy-MM-ddTHH:mm:ss 格式
+                DateTime time = DateTime.Now;
+                var startBoundary = time.GetDateTimeFormats('s')[0].ToString();
+                var description = kDescription;
+                _TASK_STATE state = SchTaskExt.CreateTaskScheduler(creator, taskName, path, interval, startBoundary, description);
+            }
+            else
+            {
+                MessageBox.Show("不能同时创建多个计划任务！！");
+            }
+        }
+
+        // 删除计划任务
+        private void End_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (SchTaskExt.IsExists(kTaskName))
+            {
+                SchTaskExt.DeleteTask(kTaskName);
             } else
             {
-                GlobalVariable.imagesAttr.images_path.Add(selectedFilePath);
+                MessageBox.Show("不能删除未定义的计划任务！！");
             }
-
         }
     }
 

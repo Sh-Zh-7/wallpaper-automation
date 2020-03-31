@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace WallPaperChanger
 {
@@ -18,7 +19,7 @@ namespace WallPaperChanger
     }
     public class Program
     {
-        // 把json文件转化为字符串，方便paser解决
+        // 把json文件转化为字符串，方便paser解析
         public static string Json2Str(string path)
         {
             string result = "";
@@ -58,9 +59,9 @@ namespace WallPaperChanger
             // 计算相应日期，该显示哪一个图片
             int index = GetIndex(startTime, timeMode, interval);
             // 使用LINQ的方式
-            int length = imagesAttr.images_path.Count;
-            string targetPath = imagesAttr.images_path[index % length];
-            Style targetStyle = (Style)imagesAttr.images_style[index % length];
+            int length = imagesAttr.imagesPath.Count;
+            string targetPath = imagesAttr.imagesPath[index % length];
+            Style targetStyle = (Style)imagesAttr.imagesStyle[index % length];
             // 根据计算出来的图片和显示格式切换桌面
             WallpaperSetter.SetWallPaper(targetPath, targetStyle);
         }
@@ -75,8 +76,8 @@ namespace WallPaperChanger
             string jsonStr = Json2Str(project_path + "/Config/time_mode.json");
             // 反序列化
             TimeMode timeMode = JsonConvert.DeserializeObject<TimeMode>(jsonStr);
-            DateTime startTime = DateTime.ParseExact(timeMode.start_time, "MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-            TimeDiff.TimeMode mode = (TimeDiff.TimeMode)timeMode.time_mode;
+            DateTime startTime = DateTime.ParseExact(timeMode.startTime, "MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            TimeDiff.TimeMode mode = (TimeDiff.TimeMode)timeMode.timeMode;
             double interval = timeMode.interval;
             // 根据图片的具体属性修改壁纸
             SetWallPaper(project_path + "/Config/image_attr.json", startTime, mode, interval);

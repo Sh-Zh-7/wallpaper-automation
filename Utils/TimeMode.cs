@@ -9,19 +9,18 @@ namespace Utils
     public class TimeMode
     {
         // 格式：MM-dd HH:mm:ss
-        public string start_time { get; set; }
-        // Second 0
-        // Minute 1
-        // Hour   2
-        // Day    3
-        public int time_mode { get; set; }
+        public string startTime { get; set; }
+        // TimeMode中各个常数所代表的含义
+        // Second: 0, Minute: 1
+        // Hour: 2, Day: 3
+        public int timeMode { get; set; }
         public double interval { get; set; }
 
         public TimeMode(DateTime dt, int timeMode, double interval)
         {
-            start_time = dt.ToString("MM-dd HH:mm:ss");
-            time_mode = timeMode;
-            this.interval = interval;       // C#里面没有指针
+            this.startTime = dt.ToString("MM-dd HH:mm:ss");
+            this.timeMode = timeMode;
+            this.interval = interval;      
         }
     }
 }
