@@ -10,7 +10,6 @@ namespace WallPaperChanger
     // 用来获取两个时间的不同格式
     public sealed class TimeDiff
     {
-
         // 注意TimeSpan的各种属性
         // 比如1:30, Hour就是1, Minute就是30
         private static TimeSpan GetDiffTime(DateTime startTime, DateTime endTime)
@@ -40,6 +39,16 @@ namespace WallPaperChanger
         {
             TimeSpan diffTime = GetDiffTime(startTime, endTime);
             return diffTime.TotalDays;
+        }
+
+        private static double GetDiffWeeks(DateTime startTime, DateTime endTime)
+        {
+            // Timespan并不支持月份
+            // 这里先转化为日期数，再由当前的月份计算
+            TimeSpan diffTime = GetDiffTime(startTime, endTime);
+            DateTime dtNow = DateTime.Now;
+            int daysOfMonth = DateTime.DaysInMonth(dtNow.Year, dtNow.Month);
+            return diffTime.TotalDays / daysOfMonth;
         }
         // 提供给外界的唯一一个函数接口，通过这个接口获得相应日期之差
         public static double GetTargetModeDiff(DateTime startTime, DateTime endTime, TimeUnit timeMode=TimeUnit.Second)
