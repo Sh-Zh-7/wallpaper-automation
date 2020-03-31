@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WallPaperChanger\WallPaperChanger.csproj" />
-    <ProjectReference Include="..\WallPaperCrontab\WPFUICrontab.csproj" />
+    <ProjectReference Include="..\WPFUI\WPFUI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

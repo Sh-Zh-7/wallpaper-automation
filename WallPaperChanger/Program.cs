@@ -67,7 +67,7 @@ namespace WallPaperChanger
             // 隐藏控制台窗口
             ConsoleHelper.hideConsole();
             // 从环境变量中获得路径名称
-            string project_path = Environment.GetEnvironmentVariable("WALLPAPER_CRONTAB", EnvironmentVariableTarget.User);
+            string project_path = Environment.GetEnvironmentVariable("AUTO_WALLPAPER", EnvironmentVariableTarget.User);
             Console.WriteLine(project_path);
             // 解析对应的json文件
             // 先获取从路径中得到的json文件

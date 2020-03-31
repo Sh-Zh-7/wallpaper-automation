@@ -139,6 +139,7 @@ namespace WallPaperCrontab.Pages
             TimeUnit targetTimeMode = new TimeUnit();
             switch (GlobalVariable.timeSelectIndex)
             {
+                // TODO：继续修改名称
                 case 0: // 1分钟
                     targetInterval = 1;
                     targetTimeMode = TimeUnit.Minute;

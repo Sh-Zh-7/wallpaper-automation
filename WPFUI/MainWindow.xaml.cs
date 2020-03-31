@@ -32,9 +32,9 @@ namespace WallPaperCrontab
         private Dictionary<string, Uri> allViews = new Dictionary<string, Uri>();
         public MainWindow()
         {
-            if (Environment.GetEnvironmentVariable("WALLPAPER_CRONTAB", EnvironmentVariableTarget.User) == null)
+            if (Environment.GetEnvironmentVariable("AUTO_WALLPAPER", EnvironmentVariableTarget.User) == null)
             {
-                Environment.SetEnvironmentVariable("WALLPAPER_CRONTAB", Environment.CurrentDirectory, EnvironmentVariableTarget.User);
+                Environment.SetEnvironmentVariable("AUTO_WALLPAPER", Environment.CurrentDirectory, EnvironmentVariableTarget.User);
             }
             InitializeComponent();
             // 给各个导航栏绑定事件
