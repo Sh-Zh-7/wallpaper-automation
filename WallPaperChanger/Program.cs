@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Utils;
@@ -19,6 +20,7 @@ namespace WallPaperChanger
     }
     public class Program
     {
+
         // 把json文件转化为字符串，方便paser解析
         public static string Json2Str(string path)
         {
@@ -68,6 +70,8 @@ namespace WallPaperChanger
 
         static public void Main(string[] args)
         {
+            // 隐藏控制台窗口
+            ConsoleHelper.hideConsole();
             // 从环境变量中获得路径名称
             string project_path = Environment.GetEnvironmentVariable("WALLPAPER_CRONTAB", EnvironmentVariableTarget.User);
             Console.WriteLine(project_path);
