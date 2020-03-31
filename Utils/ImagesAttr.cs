@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Utils
 {
+    public enum Style : int
+    {
+        Tiled,
+        Centered,
+        Stretched
+    }
     public class ImagesAttr
     {
         public ImagesAttr()

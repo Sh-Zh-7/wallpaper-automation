@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace Utils
 {
+    // 时间的单位
+    public enum TimeUnit : int
+    {
+        Second,
+        Minute,
+        Hour,
+        Day,
+        Week,
+        Month
+    }
     public class TimeMode
     {
         // 格式：MM-dd HH:mm:ss
