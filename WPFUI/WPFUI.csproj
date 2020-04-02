@@ -73,7 +73,6 @@
     <Compile Include="Pages\Wallpaper.xaml.cs">
       <DependentUpon>Wallpaper.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TaskScheduler.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

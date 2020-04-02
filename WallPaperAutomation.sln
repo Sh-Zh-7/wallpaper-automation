@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduler", "TaskScheduler\TaskScheduler.csproj", "{B475D004-B67C-4650-B2FC-ACA635B193FD}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{BA4FD5C4-5C43-4CF2-BCF8-0E4ACADE1903}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,8 @@ Global
 		{B475D004-B67C-4650-B2FC-ACA635B193FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B475D004-B67C-4650-B2FC-ACA635B193FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B475D004-B67C-4650-B2FC-ACA635B193FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4FD5C4-5C43-4CF2-BCF8-0E4ACADE1903}.Debug|Any CPU.ActiveCfg = Debug
+		{BA4FD5C4-5C43-4CF2-BCF8-0E4ACADE1903}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
