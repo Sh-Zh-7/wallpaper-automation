@@ -13,7 +13,6 @@ namespace WPFUI
         public NotifyBox()
         {
             InitializeComponent();
-            // 1620 960
             Left = SystemParameters.WorkArea.Size.Width - Width;
             Top = SystemParameters.WorkArea.Size.Height - Height;
         }
