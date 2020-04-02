@@ -21,6 +21,7 @@ namespace WallPaperCrontab
     {
         // 对象这个东西未定义也是会报错的
         public static ImagesAttr imagesAttr = new ImagesAttr();
+        public static string lastImagePath = @"/Resources/blank.png";
         public static int timeSelectIndex { get; set; }
         public static int styleSelectIndex { get; set; }
     }
@@ -32,10 +33,6 @@ namespace WallPaperCrontab
         private Dictionary<string, Uri> allViews = new Dictionary<string, Uri>();
         public MainWindow()
         {
-            if (Environment.GetEnvironmentVariable("AUTO_WALLPAPER", EnvironmentVariableTarget.User) == null)
-            {
-                Environment.SetEnvironmentVariable("AUTO_WALLPAPER", Environment.CurrentDirectory, EnvironmentVariableTarget.User);
-            }
             InitializeComponent();
             // 给各个导航栏绑定事件
             MainPageLBI.AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(MainPageLBI_MouseLeftButtonDown), true);

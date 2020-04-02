@@ -1,14 +1,36 @@
-﻿<Page x:Class="WallPaperCrontab.Pages.WallPaper"
+﻿<Page x:Class="WPFUI.Pages.Wallpaper"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WallPaperCrontab.Pages"
+      xmlns:local="clr-namespace:WPFUI.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="470" d:DesignWidth="644"
-      Title="Page2">
+      Title="Wallpaper">
 
     <Grid>
-        <Label>这是页面二</Label>
+        <Image x:Name="Display" Height="296" Margin="182,46,171,0" VerticalAlignment="Top" Width="291" Stretch="Fill"/>
+        <Button x:Name="Left" Content="&lt;" HorizontalAlignment="Left" Margin="83,159,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5" Height="74" FontSize="36" FontFamily="MT Extra" Click="Left_Button_Click" IsEnabled="False">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.748"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="Right" Content=">" HorizontalAlignment="Left" Margin="511,162,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.635,0.301" Height="81" FontSize="36" FontFamily="MT Extra" Click="Right_Button_Click" IsEnabled="False">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.748"/>
+                    <TranslateTransform X="-0.211" Y="-0.077"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="Delete" Content="删除" HorizontalAlignment="Left" Margin="242,377,0,0" VerticalAlignment="Top" Width="153" Height="63" FontSize="25" Click="Delete_Click"/>
+
     </Grid>
 </Page>

@@ -41,25 +41,43 @@ namespace WallPaperChanger
             return (int)(diffTime / interval);
         }
 
-        public static void SetWallPaper(
-            string jsonPath,
-            DateTime startTime, 
-            TimeUnit timeUnit,
-            double interval
-            )
+        //public static void SetWallPaper(
+        //    string jsonPath,
+        //    DateTime startTime, 
+        //    TimeUnit timeUnit,
+        //    double interval
+        //    )
+        //{
+        //    // 先获取从路径中得到的json文件
+        //    string jsonStr = Json2Str(jsonPath);
+        //    // 反序列化该json文件，得到各个属性（图片路径的List，壁纸的展示格式）
+        //    ImagesAttr imagesAttr = JsonConvert.DeserializeObject<ImagesAttr>(jsonStr);
+        //    // 计算相应日期，该显示哪一个图片
+        //    int index = GetIndex(startTime, timeUnit, interval);
+        //    // 使用LINQ的方式
+        //    int length = imagesAttr.imagesPath.Count;
+        //    string targetPath = imagesAttr.imagesPath[index % length];
+        //    Style targetStyle = (Style)imagesAttr.imagesStyle[index % length];
+        //    // 根据计算出来的图片和显示格式切换桌面
+        //    WallpaperSetter.SetWallPaper(targetPath, targetStyle);
+        //}
+
+        public static void SetWallPaper(string jsonPath)
         {
             // 先获取从路径中得到的json文件
             string jsonStr = Json2Str(jsonPath);
             // 反序列化该json文件，得到各个属性（图片路径的List，壁纸的展示格式）
             ImagesAttr imagesAttr = JsonConvert.DeserializeObject<ImagesAttr>(jsonStr);
             // 计算相应日期，该显示哪一个图片
-            int index = GetIndex(startTime, timeUnit, interval);
+            int index = Convert.ToInt32(Environment.GetEnvironmentVariable("RUN_CHANGE_TEST", EnvironmentVariableTarget.User));
             // 使用LINQ的方式
             int length = imagesAttr.imagesPath.Count;
             string targetPath = imagesAttr.imagesPath[index % length];
             Style targetStyle = (Style)imagesAttr.imagesStyle[index % length];
             // 根据计算出来的图片和显示格式切换桌面
             WallpaperSetter.SetWallPaper(targetPath, targetStyle);
+
+            Environment.SetEnvironmentVariable("RUN_CHANGE_TEST", (index + 1).ToString(), EnvironmentVariableTarget.User);
         }
 
         static public void Main(string[] args)
@@ -68,17 +86,17 @@ namespace WallPaperChanger
             ConsoleHelper.hideConsole();
             // 从环境变量中获得路径名称
             string project_path = Environment.GetEnvironmentVariable("AUTO_WALLPAPER", EnvironmentVariableTarget.User);
-            Console.WriteLine(project_path);
-            // 解析对应的json文件
-            // 先获取从路径中得到的json文件
-            string jsonStr = Json2Str(project_path + "/Config/time_mode.json");
-            // 反序列化
-            TimeMode timeMode = JsonConvert.DeserializeObject<TimeMode>(jsonStr);
-            DateTime startTime = DateTime.ParseExact(timeMode.startTime, "MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-            TimeUnit mode = (TimeUnit)timeMode.timeMode;
-            double interval = timeMode.interval;
-            // 根据图片的具体属性修改壁纸
-            SetWallPaper(project_path + "/Config/image_attr.json", startTime, mode, interval);
+            //// 解析对应的json文件
+            //// 先获取从路径中得到的json文件
+            //string jsonStr = Json2Str(project_path + "/Config/time_mode.json");
+            //// 反序列化
+            //TimeMode timeMode = JsonConvert.DeserializeObject<TimeMode>(jsonStr);
+            //DateTime startTime = DateTime.ParseExact(timeMode.startTime, "MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            //TimeUnit mode = (TimeUnit)timeMode.timeMode;
+            //double interval = timeMode.interval;
+            //// 根据图片的具体属性修改壁纸
+            //SetWallPaper(project_path + "/Config/image_attr.json", startTime, mode, interval);
+            SetWallPaper(project_path + "/Config/image_attr.json");
         }
     }
 }

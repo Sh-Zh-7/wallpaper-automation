@@ -9,25 +9,28 @@
       Title="Page1">
     <Grid>
         <Label HorizontalAlignment="Left" Margin="65,46,0,0" VerticalAlignment="Top" Height="41" Width="104" Content="新增壁纸" FontSize="18" FontWeight="Bold"/>
-        <Label HorizontalAlignment="Left" Margin="65,147,0,0" VerticalAlignment="Top" Height="41" Width="104" Content="展示效果" FontSize="18" FontWeight="Bold"/>
+        <Label HorizontalAlignment="Left" Margin="65,160,0,0" VerticalAlignment="Top" Height="41" Width="104" Content="展示效果" FontSize="18" FontWeight="Bold"/>
         <Label HorizontalAlignment="Left" Margin="65,250,0,0" VerticalAlignment="Top" Height="41" Width="104" Content="切换时间" FontSize="18" FontWeight="Bold"/>
-        <Button Content="浏   览" HorizontalAlignment="Left" Margin="228,45,0,0" VerticalAlignment="Top" Width="207" Height="42" Click="Browse_Button_Click"/>
-        <Button Content="添加" HorizontalAlignment="Left" Margin="474,46,0,0" VerticalAlignment="Top" Width="105" Height="41" Click="Add_Button_Click"/>
+        <Button Content="浏览" HorizontalAlignment="Left" Margin="382,45,0,0" VerticalAlignment="Top" Width="53" Height="42" Click="Browse_Button_Click" RenderTransformOrigin="0.098,0.48"/>
+        <Button Content="添加" HorizontalAlignment="Left" Margin="511,95,0,0" VerticalAlignment="Top" Width="105" Height="41" Click="Add_Button_Click" RenderTransformOrigin="0.597,0.568"/>
         <Button Content="开始切换" HorizontalAlignment="Left" Margin="140,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="Start_Button_Click"/>
         <Button Content="终止进程" HorizontalAlignment="Left" Margin="382,376,0,0" VerticalAlignment="Top" Width="127" Height="52" Click="End_Button_Click"/>
-        <ComboBox Name="StyleSelect" HorizontalAlignment="Left" Margin="228,147,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="StyleSelect_SelectionChanged">
+        <ComboBox Name="StyleSelect" HorizontalAlignment="Left" Margin="228,160,0,0" VerticalAlignment="Top" Width="261" Height="28" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="StyleSelect_SelectionChanged">
             <ListBoxItem Content="平铺" FontSize="14"/>
             <ListBoxItem Content="居中" FontSize="14"/>
             <ListBoxItem Content="拉伸" FontSize="14"/>
         </ComboBox>
-        <ComboBox Name="TimeSelect" HorizontalAlignment="Left" Margin="228,250,0,0" VerticalAlignment="Top" Width="351" Height="41" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" SelectionChanged="TimeSelect_SelectionChanged">
+        <!--<ComboBox Name="TimeSelect" HorizontalAlignment="Left" Margin="228,250,0,0" VerticalAlignment="Top" Width="351" Height="27" SelectedIndex="0" FontSize="18" FontFamily="Nirmala UI" Opacity="0.8" >
             <ListBoxItem Content="每1分钟" FontSize="14"/>
             <ListBoxItem Content="每15分钟" FontSize="14"/>
             <ListBoxItem Content="每1天" FontSize="14"/>
             <ListBoxItem Content="每1小时" FontSize="14"/>
             <ListBoxItem Content="每1周" FontSize="14"/>
-        </ComboBox>
-
-
+        </ComboBox>-->
+        <Image x:Name="Display" HorizontalAlignment="Left" Height="126" Margin="228,10,0,0" VerticalAlignment="Top" Width="132" Stretch="Fill"/>
+        <Rectangle Fill="#ffffff" HorizontalAlignment="Left" Height="3" Margin="0,210,0,0" VerticalAlignment="Top" Width="644"/>
+        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="34" Margin="228,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="242,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="69" Width="233" Opacity="0.5"><Run Text="这里提供的是cron-expression, 具体请见：
+                                                                                                                                                          http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/"/><LineBreak/><Run Text="tutorial-lesson-06.html"/></TextBlock>
     </Grid>
 </Page>
