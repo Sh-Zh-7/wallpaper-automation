@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Utils;
+using WPFUI;
 
 namespace WallPaperCrontab.Pages
 {
@@ -224,6 +225,10 @@ namespace WallPaperCrontab.Pages
                         string prefix = Environment.GetEnvironmentVariable("AUTO_WALLPAPER", EnvironmentVariableTarget.User);
                         string cmd = prefix + "/TaskScheduler.exe -p \"" + parameter + "\"";
                         ConsoleHelper.ExecuteCmd(cmd);
+
+                        new NotifyBox() {
+                            NotifyMessage="创建进程成功！"
+                        }.Show();
                     }
                     else
                     {
@@ -322,6 +327,11 @@ namespace WallPaperCrontab.Pages
                 // 终止进程
                 // ConsoleHelper.CloseProcess("TaskScheduler");
                 ConsoleHelper.ExecuteCmd("taskkill /F /IM TaskScheduler.exe");
+
+                new NotifyBox()
+                {
+                    NotifyMessage = "删除进程成功！"
+                }.Show();
             }
 
             #region DEPRECATED_USING_WINDOWS_TASKSHEDULER

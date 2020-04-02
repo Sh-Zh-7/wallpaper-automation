@@ -67,6 +67,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotifyBox.xaml.cs">
+      <DependentUpon>NotifyBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Wallpaper.xaml.cs">
       <DependentUpon>Wallpaper.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NotifyBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AboutUs.xaml">
       <SubType>Designer</SubType>
